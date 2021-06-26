@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>IMA - Assignment 01 - CLASS</title>
+
+        <!-- Adding IONIC related dependencies -->
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+        <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"> </script>
+
+        <!-- Adding IONIC related dependencies (OFFLINE) -->
+        <!-- <script type="module" src="../scripts/third-party/@ionic-core-ionic-ionic.esm.js"></script>
+        <script nomodule src="../scripts/third-party/@ionic-core-ionic-ionic.js"></script>
+        <link rel="stylesheet" href="../styles/third-party/@ionic-core-css-ionic.bundle.css" /> -->
+
+
+        <!-- favicon.ico (404 NOT FOUND) fix -->
+
+
+        <!-- Adding Local file dependencies -->
+        <link rel="stylesheet" href="styles/styling-helper.css" />
+        <link rel="stylesheet" href="styles/main.css" />
+
+        <script src="scripts/javascript-helper.js"></script>
+        <script src="scripts/main.js"></script>
+    </head>
+
+    <body>
+        <p id="currentViewport" absolute position-center-y></p>
+        <!-- Adding Ionic context here -->
+        <ion-app>    
+            <ion-content>
+                <ion-tabs>
+                    <ion-tab tab="inbox">
+                        <ion-nav>
+                            <ion-header>
+                                <ion-toolbar>
+                                    <ion-title> Inbox </ion-title>
+                                </ion-toolbar>
+                    
+                                <ion-toolbar>
+                                    <div filter-wrapper relative position-right>
+                                        <ion-icon name="md-flash"> </ion-icon>
+                                        <ion-label> Filter</ion-label>
+                                                            
+                                        <ion-select style="float:right">                                
+                                            <ion-select-option value="unread">
+                                                Unread
+                                            </ion-select-option>
+                                            
+                                            <ion-select-option value="flagged">
+                                                Flagged
+                                            </ion-select-option>
+                                            
+                                            <ion-select-option value="attachments">
+                                                Attachments
+                                            </ion-select-option>
+                                        </ion-select>
+                                    </div>
+                                </ion-toolbar>  
+                            </ion-header>
+                            <ion-grid>
+                                <ion-row>
+                                    <ion-col size-sm="5" size="12">
+                                        <ion-list>
+                                            <ion-button id="btn-toast"> Toast </ion-button>
+    
+                                            <ion-item id="borderRead" isRead="true" hasAttachment="false" isFlagged="false">
+                                                <ion-avatar>
+                                                    <img src="assets/images/person-avatar.png">
+                                                </ion-avatar>
+                                                
+                                                <ion-item-sliding>
+                                                    <ion-item-options side="end">
+                                                        <ion-item-option onClick="reminder(item)">
+                                                            <ion-icon slot="icon-only" name="alarm" style="color:'#FFF113' "> </ion-icon>
+                                                        </ion-item-option>
+                                                        <ion-item-option color="danger" onClick="delete(item)">
+                                                            <ion-icon slot="icon-only" name="trash"> </ion-icon>
+                                                        </ion-item-option>
+    
+                                                    </ion-item-options>
+                                                    <ion-item id="para1">
+                                                        <ion-label position="stacked"> Jake Dalli </ion-label> 
+                                                        <ion-label position="stacked"> Lorem ipsum dolor, sit amet </ion-label>
+                                                        <ion-label position="stacked"> Lorem ipsum dolor sit amet consectetur, adipisicing eli...</ion-label>
+                                                        <ion-label position="stacked" id="time1"> 13:40 </ion-label><br>
+                                                    </ion-item>
+                                                </ion-item-sliding>
+                                               
+                                            </ion-item>
+    
+                                                        
+                                            <ion-item isRead="false" hasAttachment="false" isFlagged="false">
+                                                <ion-avatar>
+                                                    <img src="assets/images/person-avatar.png">
+                                                </ion-avatar>
+                                                
+                                                <ion-item-sliding>
+                                                    <ion-item-options side="end">
+                                                        <ion-item-option onClick="reminder(item)">
+                                                            <ion-icon slot="icon-only" name="alarm" style="color:'#FFF113' "> </ion-icon>
+                                                        </ion-item-option>
+                                                        <ion-item-option color="danger" onClick="delete(item)">
+                                                            <ion-icon slot="icon-only" name="trash"> </ion-icon>
+                                                        </ion-item-option>
+    
+                                                    </ion-item-options>
+                                                    <ion-item id="para1">
+                                                        <ion-label position="stacked"> Jake Dalli </ion-label>
+                                                        <ion-label position="stacked"> Lorem ipsum dolor, sit amet</ion-label>
+                                                        <ion-label position="stacked"> Lorem ipsum dolor sit amet consectetur, adipisicing eli... </ion-label><br>
+                                                        <ion-label position="stacked" id="time1"> 13:25 </ion-label><br>
+                                                    </ion-item>
+                                                </ion-item-sliding>
+                                            </ion-item>
+    
+                                            <ion-item>
+                                                <ion-avatar isRead="false" hasAttachment="false" isFlagged="false">
+                                                    <img  src="assets/images/person-avatar.png">
+                                                </ion-avatar>
+                                    
+                                                <ion-item-sliding>
+                                                    <ion-item-options side="end">
+                                                        <ion-item-option onClick="reminder(item)">
+                                                            <ion-icon slot="icon-only" name="alarm" style="color:'#FFF113' "> </ion-icon>
+                                                        </ion-item-option>
+                                                        <ion-item-option color="danger" onClick="delete(item)">
+                                                            <ion-icon slot="icon-only" name="trash"> </ion-icon>
+                                                        </ion-item-option>
+    
+                                                    </ion-item-options>
+                                                    <ion-item id="para1">
+                                                        <ion-label position="stacked"> Peter Piper </ion-label>
+                                                        <ion-label position="stacked"> Lorem ipsum dolor, sit amet</ion-label>
+                                                        <ion-label position="stacked"> Lorem ipsum dolor sit amet consectetur, adipisicing eli... </ion-label><br>
+                                                        <ion-label position="stacked" id="time1"> 09:42 </ion-label><br>
+                                                    </ion-item>
+                                                </ion-item-sliding>
+                                            </ion-item>
+                                                
+                                            <ion-item id="borderRead" isRead="true" hasAttachment="true" isFlagged="false">
+                                                <ion-avatar>
+                                                    <img  src="assets/images/person-avatar.png">
+                                                </ion-avatar>
+                                
+                                                <ion-item-sliding>
+                                                    <ion-item-options side="end">
+                                                        <ion-item-option onClick="reminder(item)">
+                                                            <ion-icon slot="icon-only" name="alarm" style="color:'#FFF113' "> </ion-icon>
+                                                        </ion-item-option>
+                                                        <ion-item-option color="danger" onClick="delete(item)">
+                                                            <ion-icon slot="icon-only" name="trash"> </ion-icon>
+                                                        </ion-item-option>
+    
+                                                    </ion-item-options>
+                                                    <ion-item id="para1">
+                                                        <ion-icon name="attach" id="icon" position="stacked"> </ion-icon>
+                                                        <ion-label position="stacked"> Dario Zammit </ion-label>
+                                                        <ion-label position="stacked"> Lorem ipsum dolor, sit amet</ion-label>
+                                                        <ion-label position="stacked"> Lorem ipsum dolor sit amet consectetur, adipisicing eli... </ion-label><br>
+                                                        <ion-label position="stacked" id="time1"> Wed: 14:12 </ion-label><br>
+                                                    </ion-item>
+                                                </ion-item-sliding>
+                                            </ion-item>
+    
+                                            <ion-item id="borderRead" isRead="true" hasAttachment="false" isFlagged="true">
+                                                <ion-avatar >
+                                                    <img src="assets/images/person-avatar.png">
+                                                </ion-avatar>
+                                    
+                                                <ion-item-sliding>
+                                                    <ion-item-options side="end">
+                                                        <ion-item-option onClick="reminder(item)">
+                                                            <ion-icon slot="icon-only" name="alarm" style="color:'#FFF113' "> </ion-icon>
+                                                        </ion-item-option>
+                                                        <ion-item-option color="danger" onClick="delete(item)">
+                                                            <ion-icon slot="icon-only" name="trash"> </ion-icon>
+                                                        </ion-item-option>
+    
+                                                    </ion-item-options>
+                                                    <ion-item id="para1">
+                                                        <ion-icon name="flag" color="danger" id="icon" position="stacked"> </ion-icon>
+                                                        <ion-label position="stacked"> OUTLOOK MAILER: DO NOT REPLY </ion-label>
+                                                        <ion-label position="stacked"> Lorem ipsum dolor, sit amet</ion-label>
+                                                        <ion-label position="stacked"> Lorem ipsum dolor sit amet consectetur, adipisicing eli... </ion-label><br>
+                                                        <ion-label position="stacked" id="time1"> Mon: 17:52 </ion-label><br>
+                                                                        
+                                                    </ion-item>
+                                                </ion-item-sliding>
+                                            </ion-item>
+                                                        
+                                        </ion-list>
+                                    </ion-col>
+                                    
+    
+                                    <ion-col size="12" size-sm="7" class="ion-hide-xs-down" id="background">
+                                        <div id="image">
+                                            <img src="assets/images/no-email-selected.png">
+                                            <ion-label> Select an item to read</ion-label>
+                                        </div>
+                                    </ion-col>
+                                        
+                                
+                                </ion-row>               
+                            </ion-grid>
+                        </ion-nav>
+                    </ion-tab>
+
+                    <ion-tab tab="deletedItems">
+                        <ion-nav>
+                            <ion-header>
+                                <ion-toolbar>
+                                    <ion-title> Deleted Mail </ion-title>
+                                </ion-toolbar>
+                            </ion-header>
+                                
+                            <ion-list>
+    
+                            </ion-list>
+                        </ion-nav>
+                        
+                    </ion-tab>
+
+                    <ion-tab-bar slot="bottom">
+                        <ion-tab-button tab="inbox">
+                            <ion-icon name="mail"> </ion-icon>
+                            <ion-label> Inbox </ion-label>
+                        </ion-tab-button>
+                                
+                        <ion-tab-button tab="deletedItems">
+                            <ion-icon name="trash"> </ion-icon>
+                            <ion-label> Deleted items</ion-label>
+                        </ion-tab-button>
+                    </ion-tab-bar>
+                
+                </ion-tabs>
+            </ion-content>
+        </ion-app>
+    
+
+        <script type="text/javascript" src="js/Toast.js"> </script>
+    </body>
+</html>
